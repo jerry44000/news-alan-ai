@@ -1,11 +1,52 @@
-import React from 'react';
+import React from "react";
+import {
+  Card,
+  CardActions,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+} from "@mui/material";
+import { ClassNames } from "@emotion/react";
+import useStyles from "./styles.js";
 
-const NewsCard = () => {
-    return (
+const NewsCard = ({
+  article: { description, publishedAt, source, title, url, urlToImage },
+  i,
+}) => {
+    const classes = useStyles();
+  return (
+    <Card>
+      <CardActionArea>
+        <CardMedia className={classes.media} image={urlToImage} />
         <div>
-            News Card
+          <Typography variant="body2" color="textSecondary" component="h2">
+            {new Date(publishedAt).toDateString()}
+            <Typography variant="body2" color="textSecondary" component="h2">
+              {source.name}
+            </Typography>
+          </Typography>
         </div>
-    );
+        <Typography gutterBottom variant="h5">
+          {title}
+        </Typography>
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Learn more
+        </Button>
+        <Typography variant="h5" color="textSecondary">
+          {i + 1}
+        </Typography>
+      </CardActions>
+    </Card>
+  );
 };
 
 export default NewsCard;
