@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import NewsCards from "./components/newsCards/NewsCards.js";
 import alan from "./assets/alanai.png";
-import './styles.css';
+import "./styles.css";
 import { ClassNames } from "@emotion/react";
 
 const alanKey =
@@ -10,7 +10,8 @@ const alanKey =
 
 const App = () => {
   const [newsArticles, setNewsArticles] = useState([]);
- 
+  const [activeArticle, setActiveArticle] = useState(0);
+
   useEffect(() => {
     alanBtn({
       key: alanKey,
@@ -18,6 +19,8 @@ const App = () => {
         if (command === "newHeadlines") {
           setNewsArticles(articles);
           console.log(articles);
+        } else if (command === "highlight") {
+          setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
         }
       },
     });
@@ -28,7 +31,7 @@ const App = () => {
       <div className="maineImage">
         <img src={alan} alt="alan logo" className="alan" />
       </div>
-      <NewsCards articles={newsArticles} />
+      <NewsCards articles={newsArticles} activeArticle={activeArticle}/>
     </div>
   );
 };
