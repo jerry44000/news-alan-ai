@@ -8,14 +8,13 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { ClassNames } from "@emotion/react";
 import useStyles from "./styles.js";
 
 const NewsCard = ({
   article: { description, publishedAt, source, title, url, urlToImage },
   i,
 }) => {
-    const classes = useStyles();
+  const classes = useStyles();
   return (
     <Card className={classes.card}>
       <CardActionArea href={url} target="_blank">

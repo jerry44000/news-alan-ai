@@ -1,0 +1,12 @@
+.mainImage {
+   
+    border: 1px black solid;
+}
+.alan {
+    height: 200px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
